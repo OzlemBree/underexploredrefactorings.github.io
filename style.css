@@ -160,7 +160,8 @@ footer {
     padding: 0.8rem;
     background: #f9f9f9;
     border-radius: 0 0 5px 5px;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
 }
-
 
 
