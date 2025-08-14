@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underexplored Refactorings</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -17,7 +18,7 @@
     </header>
 
     <main>
-        <section>
+        <section class="intro">
             <h2>Introduction</h2>
             <p>
                 This page presents a curated list of refactorings that have been underexplored in 
@@ -27,19 +28,38 @@
             </p>
         </section>
 
-        <section>
+        <section class="refactorings">
             <h2>List of Underexplored Refactorings</h2>
-            <ul>
-                <li><strong>Refactoring 1:</strong> Brief description of what it does.</li>
-                <li><strong>Refactoring 2:</strong> Brief description of what it does.</li>
-                <li><strong>Refactoring 3:</strong> Brief description of what it does.</li>
-                <li><strong>Refactoring 4:</strong> Brief description of what it does.</li>
-                <li><strong>Refactoring 5:</strong> Brief description of what it does.</li>
-                <!-- Add more as needed -->
-            </ul>
+            <div class="refactoring-grid">
+                <div class="refactoring-card">
+                    <h3><i class="fas fa-code-branch"></i> Refactoring 1</h3>
+                    <p>Brief description of what it does and why it’s important.</p>
+                    <div class="tags">
+                        <span class="tag rename">Rename</span>
+                        <span class="tag context">Context-specific</span>
+                    </div>
+                </div>
+                <div class="refactoring-card">
+                    <h3><i class="fas fa-code-merge"></i> Refactoring 2</h3>
+                    <p>Brief description of what it does and why it’s important.</p>
+                    <div class="tags">
+                        <span class="tag move">Move</span>
+                        <span class="tag general">General</span>
+                    </div>
+                </div>
+                <div class="refactoring-card">
+                    <h3><i class="fas fa-exchange-alt"></i> Refactoring 3</h3>
+                    <p>Brief description of what it does and why it’s important.</p>
+                    <div class="tags">
+                        <span class="tag replace">Replace</span>
+                        <span class="tag context">Context-specific</span>
+                    </div>
+                </div>
+                <!-- Add more cards as needed -->
+            </div>
         </section>
 
-        <section>
+        <section class="importance">
             <h2>Why These Refactorings Matter</h2>
             <p>
                 By focusing on these underexplored refactorings, researchers and developers can 
