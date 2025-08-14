@@ -37,10 +37,12 @@ nav a:hover {
 
 /* Main content */
 main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
+    padding: 2rem;          /* keep your original padding */
+    max-width: 1200px;      /* keep the max width */
+    margin-left: 240px;     /* shift content right for sidebar */
+    margin-right: auto;      /* keep right side aligned */
 }
+
 
 section h2 {
     color: #2c3e50;
@@ -163,5 +165,43 @@ footer {
     transition: max-height 0.3s ease;
     overflow: hidden;
 }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: white;
+    padding-top: 1rem;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 0.5rem 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
 
 
