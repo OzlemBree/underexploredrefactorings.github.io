@@ -133,5 +133,15 @@ footer {
     border-radius: 50%;
     background-color: rgba(0,0,0,0.05); /* light background */
 }
+.more-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+    text-decoration: none;
+}
+.more-link:hover {
+    text-decoration: underline;
+}
 
 
