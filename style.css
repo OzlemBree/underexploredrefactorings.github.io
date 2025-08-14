@@ -143,5 +143,24 @@ footer {
 .more-link:hover {
     text-decoration: underline;
 }
+.accordion-header {
+    background: #2c3e50;
+    color: white;
+    padding: 0.8rem;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+.accordion-content {
+    display: none;
+    padding: 0.8rem;
+    background: #f9f9f9;
+    border-radius: 0 0 5px 5px;
+}
+
 
 
