@@ -1,5 +1,8 @@
 /* General styles */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
     font-family: "Times New Roman", Times, serif;
     line-height: 1.6;
     margin: 0;
@@ -7,6 +10,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
+
 
 /* Header and navigation */
 header {
@@ -37,11 +41,13 @@ nav a:hover {
 
 /* Main content */
 main {
+    flex: 1; /* fills available space between header and footer */
     padding: 2rem;
     max-width: 1200px;
     margin-left: 240px; /* space for sidebar */
     margin-right: auto;
 }
+
 
 
 section h2 {
@@ -108,8 +114,8 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem 0;
-    margin-top: 2rem;
 }
+
 
 /* Icon Colors */
 .icon-replace {
