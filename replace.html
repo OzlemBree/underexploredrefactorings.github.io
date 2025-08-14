@@ -34,14 +34,27 @@
         </section>
     </main>
 
-    <script>
-        // Simple accordion toggle
-        document.querySelectorAll('.accordion-header').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            });
+ <script>
+document.querySelectorAll('.accordion-header').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+
+        // Optional: Close all others before opening this one
+        document.querySelectorAll('.accordion-content').forEach(panel => {
+            if (panel !== content) {
+                panel.style.display = 'none';
+            }
         });
-    </script>
+
+        // Toggle this one
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
