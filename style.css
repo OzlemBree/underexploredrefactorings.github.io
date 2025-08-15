@@ -173,12 +173,6 @@ footer {
     transition: max-height 0.3s ease;
     overflow: hidden;
 }
-.accordion-header sup {
-  vertical-align: super;
-  font-size: 0.6em; /* make it smaller than main text */
-  line-height: 1;
-}
-
 .sidebar {
     position: fixed;
     top: 70px; /* below header */
