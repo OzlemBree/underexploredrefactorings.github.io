@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Refactorings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Addition Refactorings</h1>
+    </header>
+<nav class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="replace.html"><i class="fas fa-exchange-alt"></i> Replace</a></li>
+        <li><a href="interface.html"><i class="fas fa-handshake"></i> Interface Protocol</a></li>
+        <li><a href="addition.html"><i class="fas fa-plus-circle"></i> Addition</a></li>
+        <li><a href="remove.html"><i class="fas fa-minus-circle"></i> Remove</a></li>
+        <li><a href="merge.html"><i class="fas fa-object-group"></i> Merge</a></li>
+    </ul>
+</nav>
+
+    <main>
+        <section>
+            <h2>List of Addition Refactorings</h2>
+
+            <!-- Accordion style -->
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Add brackets</button>
+                    <div class="accordion-content">
+                        <p>This refactoring replaces a constructor call with a static factory method for better flexibility.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Add delegation for super class’s constructor</button>
+                    <div class="accordion-content">
+                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                    </div>
+                </div>
+				
+				<div class="accordion-item">
+                    <button class="accordion-header">Parameterize links</button>
+                    <div class="accordion-content">
+                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                    </div>
+                </div>
+										
+            </div>
+        </section>
+    </main>
+
+ <script>
+document.querySelectorAll('.accordion-header').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+
+        // Optional: Close all others before opening this one
+        document.querySelectorAll('.accordion-content').forEach(panel => {
+            if (panel !== content) {
+                panel.style.display = 'none';
+            }
+        });
+
+        // Toggle this one
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    });
+});
+</script>
+ <footer>
+        <p>&copy; 2025 Underexplored Refactorings.</p>
+    </footer>
+</body>
+</html>
