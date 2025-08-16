@@ -96,7 +96,25 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace array list with primitive array</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                         <p><strong>Definition:</strong> Replace an <code>ArrayList</code> with a primitive array when the size is fixed and known in advance.</p>
+  
+  <pre><code class="language-java">
+- ArrayList&lt;String&gt; result = new ArrayList&lt;String&gt;();
+-
++ String[] result = new String[to - from];
+  for (int j = from; j != to; ++j) {
+-     result.add(args[j]);
++     result[j - from] = args[j];
+  }
+-
+- return result.toArray(new String[result.size()]);
++ return result;
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Improves performance and reduces overhead by avoiding dynamic list management when a fixed-size array is sufficient.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/junit-team/junit4/commit/b052c712" target="_blank"> JUnit 4 Commit Example </a>
+  </p>
                     </div>
                 </div>
 				
