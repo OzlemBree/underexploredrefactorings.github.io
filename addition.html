@@ -59,7 +59,20 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Add delegation for super class’s constructor</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Replace a direct call to the superclass constructor with a delegating call to another constructor in the same class, which in turn invokes the superclass constructor.</p> 
+  
+<pre><code class="language-java">
+-    public Http11Nio2Protocol() {
+-        super(new Nio2Endpoint());
+-    }
++    public Http11Nio2Protocol() {
++        this(new Nio2Endpoint());
++    }
+</code></pre> 
+
+  <p><strong>Rationale:</strong> Centralizes constructor logic, reducing duplication and ensuring consistent initialization. Delegation improves maintainability by routing all constructor invocations through a single entry point.</p>  
+
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/tomcat/commit/992bf9219b" target="_blank">Apache Tomcat Commit Example</a></p>
                     </div>
                 </div>
 				
