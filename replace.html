@@ -297,7 +297,19 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace static nested class with inner class</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Replace a static nested class with a non-static inner class to allow access to the enclosing instance’s fields and methods.</p>
+  
+  <pre><code class="language-java">
+- static final class Search {
++ final class Search {
+
+     static final Predicate&lt;Class&lt;?&gt;&gt; always = clazz -&gt; true;
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Enables the nested class to reference the outer class instance, facilitating tighter coupling and easier access to instance members when needed.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/spring-projects/spring-framework/commit/eafbcfd385" target="_blank">Spring Framework Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
