@@ -31,7 +31,28 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Add brackets</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces a constructor call with a static factory method for better flexibility.</p>
+                         <p><strong>Definition:</strong> Add curly braces <code>{ }</code> around the body of a control structure (e.g., <code>if</code>, <code>for</code>, <code>while</code>) to make the scope explicit and reduce ambiguity.</p>
+  
+  <pre><code class="language-java">
+- public boolean matchesSafely(final Result item) {
+-     for(Failure f: item.getFailures())
+-     {
+-         return CoreMatchers.instanceOf(causeClass).matches(f.getException().getCause());
+-     }
+-     return false;
+- }
++ public boolean matchesSafely(Result item) {
++     for(Failure f: item.getFailures()) {
++         return CoreMatchers.instanceOf(causeClass).matches(f.getException().getCause());
++     }
++     return false;
++ }
+  </code></pre>
+
+  <p><strong>Rationale:</strong> Adding braces makes control flow clearer, prevents errors when adding new statements, and improves code readability and maintainability.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/junit-team/junit4/commit/bd6dc3af" target="_blank">JUnit 4 Commit Example</a>
+  </p>
                     </div>
                 </div>
 
