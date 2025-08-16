@@ -155,7 +155,27 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace for with while </button>
                     <div class="accordion-content">
-                        
+                        <p><strong>Definition:</strong> Replace an enhanced <code>for</code>-loop with a <code>while</code>-loop using an iterator to gain finer control over iteration.</p>
+  
+  <pre><code class="language-java">
+- Map&lt;String, Mapper&gt; mergedMappers = null;
+- for (Mapper mergeWithMapper : mergeWith) {
+-     Mapper mergeIntoMapper = (mergedMappers == null ? existing.mappers : mergedMappers)
+-         .get(mergeWithMapper.simpleName());
++ Iterator&lt;Mapper&gt; iterator = mergeWith.iterator();
++ if (iterator.hasNext() == false) {
++     return Map.copyOf(existing.mappers);
++ }
++ Map&lt;String, Mapper&gt; mergedMappers = new HashMap&lt;&gt;(existing.mappers);
++ while (iterator.hasNext()) {
++     Mapper mergeWithMapper = iterator.next();
++     Mapper mergeIntoMapper = mergedMappers.get(mergeWithMapper.simpleName());
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Provides greater flexibility by explicitly handling iteration with an <code>Iterator</code>, enabling early exits, conditional checks, and easier integration of additional logic.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/elastic/elasticsearch/commit/cd38c3a28d4" target="_blank">Elasticsearch Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
