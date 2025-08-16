@@ -275,7 +275,22 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace local variable with field</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                         <p><strong>Definition:</strong> Replace a local variable with a class-level field to extend its scope and reuse it across multiple methods.</p>
+  
+  <pre><code class="language-java">
+- DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+- beanFactory.registerSingleton("configuration", new InnerComponentConfiguration());
+- compile(beanFactory, beanDefinition, (instanceSupplier, compiled) -&gt; {
+-     NoDependencyComponent bean = getBean(beanFactory, beanDefinition, instanceSupplier);
++ this.beanFactory.registerSingleton("configuration", new InnerComponentConfiguration());
++ compile(beanDefinition, (instanceSupplier, compiled) -&gt; {
++     NoDependencyComponent bean = getBean(beanDefinition, instanceSupplier);
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Increases the accessibility of the object, enabling reuse across methods and reducing repeated instantiation or parameter passing.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/spring-projects/spring-framework/commit/35372e5e72" target="_blank"> Spring Framework Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
