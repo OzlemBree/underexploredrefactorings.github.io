@@ -227,7 +227,17 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace wrapper object with primitive </button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Replace the use of wrapper objects with primitive arrays when possible to improve performance and reduce unnecessary object creation.</p>
+  
+  <pre><code class="language-java">
+- super(name, NAME, sorts == null ? new String[0] : sorts.stream().map(s -&gt; s.getFieldName()).toArray(String[]::new));
++ super(name, NAME, sorts == null ? new String[0] : sorts.stream().map(FieldSortBuilder::getFieldName).toArray(String[]::new));
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Reduces memory overhead and improves execution efficiency by avoiding unnecessary wrapper objects and leveraging primitive arrays directly.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/elastic/elasticsearch/commit/850e88c5894" target="_blank">Elasticsearch Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
