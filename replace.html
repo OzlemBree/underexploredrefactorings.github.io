@@ -78,7 +78,18 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace array with singleton list</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Replace <code>Arrays.asList()</code> when creating a single-element list with <code>Collections.singletonList()</code> for efficiency and clarity.</p>
+  
+  <pre><code class="language-java">
+- return Arrays.asList(cause);
++ return singletonList(cause);
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Using <code>singletonList()</code> is more expressive, avoids unnecessary array creation, and clearly communicates the intent of returning a list with exactly one element.</p>
+
+  <p><strong>Reference:</strong> 
+    <a href="https://github.com/junit-team/junit4/commit/17a2f117" target="_blank"> JUnit 4 Commit Example  </a>
+  </p>
                     </div>
                 </div>
 				
