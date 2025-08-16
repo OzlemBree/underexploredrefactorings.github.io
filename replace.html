@@ -316,7 +316,31 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Simplify Source code by using existing data type</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                         <p><strong>Definition:</strong> Simplify code by replacing manual array management with built-in or existing data structures that provide the same functionality.</p>
+  
+  <pre><code class="language-java">
+- synchronized (applicationListenersLock) {
+-     String results[] = new String[applicationListeners.length + 1];
+-     for (int i = 0; i &lt; applicationListeners.length; i++) {
+-         if (listener.equals(applicationListeners[i])) {
+-             log.info(sm.getString("standardContext.duplicateListener", listener));
+-             return;
+-         }
+-         results[i] = applicationListeners[i];
+-     }
+-     results[applicationListeners.length] = listener;
+-     applicationListeners = results;
++ if (applicationListeners.addIfAbsent(listener)) {
++     fireContainerEvent("addApplicationListener", listener);
++ } else {
++     log.info(sm.getString("standardContext.duplicateListener", listener));
+  }
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Reduces boilerplate and simplifies code logic by leveraging existing collection methods, improving readability and maintainability.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/apache/tomcat/commit/9c09f9abfb" target="_blank">Apache Tomcat Commit Example </a>
+  </p>
                     </div>
                 </div>
             </div>
