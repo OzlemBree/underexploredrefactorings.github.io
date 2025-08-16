@@ -51,7 +51,20 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Remove brackets</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Remove unnecessary braces around a single-statement <code>for</code> loop body to simplify the code.</p>
+  
+  <pre><code class="language-java">
+- for(Failure f: item.getFailures())
+- {
+-     return CoreMatchers.instanceOf(causeClass).matches(f.getException().getCause());
+- }
++ for(Failure f: item.getFailures())
++     return CoreMatchers.instanceOf(causeClass).matches(f.getException().getCause());
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Since the loop body contains only a single statement, removing the braces improves readability by reducing visual clutter. It follows common Java style conventions where braces are optional for one-line blocks, though some teams may prefer always using braces for consistency and to prevent future errors.</p>
+  
+  <p><strong>Reference:</strong> <a href="https://github.com/junit-team/junit4/commit/bd6dc3af" target="_blank">JUnit 4 Commit Example</a></p>
                     </div>
                 </div>
 				
