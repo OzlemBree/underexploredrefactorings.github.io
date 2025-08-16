@@ -205,7 +205,22 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace inner class with lambda expression </button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Replace an anonymous inner class with a lambda expression to simplify the code and improve readability.</p>  
+  <pre><code class="language-java">
+- CacheBuilder&lt;Key, BytesReference&gt; cacheBuilder = CacheBuilder.&lt;Key, BytesReference&gt;builder()
+-     .setMaximumWeight(sizeInBytes)
+-     .weigher((k, v) -&gt; k.ramBytesUsed() + v.ramBytesUsed())
+-     .removalListener(this);
++ CacheBuilder&lt;Key, BytesReference&gt; cacheBuilder = CacheBuilder.&lt;Key, BytesReference&gt;builder()
++     .setMaximumWeight(INDICES_CACHE_QUERY_SIZE.get(settings).getBytes())
++     .weigher((k, v) -&gt; k.ramBytesUsed() + v.ramBytesUsed())
++     .removalListener(notification -&gt; notification.getKey().entity.onRemoval(notification));
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Simplifies code structure, reduces boilerplate, and enhances readability by using concise lambda expressions instead of verbose inner classes.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/elastic/elasticsearch/commit/a5aae93b652" target="_blank">Elasticsearch Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
