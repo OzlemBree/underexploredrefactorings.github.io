@@ -79,7 +79,23 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Parameterize links</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Consolidate and parameterize hardcoded documentation links into reusable, maintainable variables to reduce duplication and improve consistency.</p>
+  
+  <pre><code class="language-yaml">
+-    docs-spring: "{docs-site}/spring-framework/docs/{spring-version}" 
+-    docs-spring-framework: '{docs-site}/spring-framework/docs/{spring-version}'
+-    api-spring-framework: '{docs-spring-framework}/javadoc-api/org/springframework'
+-    docs-graalvm: 'https://www.graalvm.org/22.3/reference-manual'
+-    docs-spring-boot: '{docs-site}/spring-boot/docs/current/reference'
++    spring-framework-docs-root: '{docs-site}/spring-framework/docs'
++    spring-framework-api: '{spring-framework-docs-root}/{spring-version}/javadoc-api/org/springframework'
++    spring-framework-api-kdoc: '{spring-framework-docs-root}/{spring-version}/kdoc-api'
++    spring-framework-reference: '{spring-framework-docs-root}/{spring-version}/reference'
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Reduces repetition by centralizing the root documentation path into a single variable. This makes future updates easier (e.g., changing the root URL once instead of in multiple places), improves readability, and ensures consistency across different documentation references.</p>
+  
+  <p><strong>Reference:</strong> <a href="https://github.com/spring-projects/spring-framework/commit/8567402969" target="_blank">Spring Framework Commit Example</a></p>
                     </div>
                 </div>
 										
