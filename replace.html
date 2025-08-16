@@ -54,7 +54,24 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Replace array with list</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Replace an array with a <code>List</code> collection to gain flexibility in managing elements.</p>
+  
+  <pre><code class="language-java">
+- X509Certificate jsseCerts[] = null;
++ List&lt;X509Certificate&gt; jsseCerts = new ArrayList&lt;&gt;();
+  
+  ByteChunk certData = certificates.getByteChunk();
+- ByteArrayInputStream bais = new ByteArrayInputStream(
+-     certData.getBytes(), certData.getStart(), certData.getLength());
++ ByteArrayInputStream bais =
++     new ByteArrayInputStream(certData.getBytes(), certData.getStart(), certData.getLength());
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Improves code flexibility by leveraging the <code>List</code> interface, which supports dynamic resizing and convenient APIs, unlike fixed-size arrays.</p>
+
+  <p><strong>Reference:</strong> 
+    <a href="https://github.com/apache/tomcat/commit/f650ea788d" target="_blank">Apache Tomcat Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
