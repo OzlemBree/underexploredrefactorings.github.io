@@ -31,7 +31,19 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Loosen parameter’s type limitations</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces a constructor call with a static factory method for better flexibility.</p>
+                         <p><strong>Definition:</strong> Relax the type restriction on a method parameter to allow a broader range of input types, increasing flexibility and reusability.</p>
+  
+  <pre><code class="language-java">
+- static public Test createTest(Class&lt;? extends TestCase&gt; theClass, String name) {
+-     Constructor&lt;? extends TestCase&gt; constructor;
++ static public Test createTest(Class&lt;?&gt; theClass, String name) {
++     Constructor&lt;?&gt; constructor;
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Increases method flexibility by accepting a wider variety of classes, making the code more general and easier to reuse in different contexts.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/junit-team/junit4/commit/2de4d6f2" target="_blank">JUnit 4 Commit Example</a>
+  </p>
                     </div>
                 </div>		
               
