@@ -144,7 +144,18 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace for with while </button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Replace a manually composed method chain with a built-in API method that provides the same functionality more directly.</p>
+  
+  <pre><code class="language-java">
+- flux.filter(t -> t instanceof MultipartParser.BodyToken)
+-     .cast(MultipartParser.BodyToken.class);
++ flux.ofType(MultipartParser.BodyToken.class);
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Simplifies the code by using a dedicated API method, improving readability, reducing boilerplate, and making intent clearer.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/spring-projects/spring-framework/commit/d96a63944c" target="_blank">SpringFramework Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
