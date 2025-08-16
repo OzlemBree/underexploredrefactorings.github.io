@@ -182,7 +182,23 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace HashMap with linkedHashMap</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Replace <code>HashMap</code> with <code>LinkedHashMap</code> to preserve insertion order of key-value pairs while maintaining similar performance characteristics.</p>
+  
+  <pre><code class="language-java">
+- Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt; methodsForAnnotations =
+-     new HashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt;();
+- Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt; fieldsForAnnotations =
+-     new HashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt;();
++ Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt; methodsForAnnotations =
++     new LinkedHashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt;();
++ Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt; fieldsForAnnotations =
++     new LinkedHashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt;();
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Ensures predictable iteration order, which is useful when consistent traversal of elements is required, while retaining the constant-time performance of a hash-based map.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/junit-team/junit4/commit/c75dcc28" target="_blank">JUnit 4 Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
