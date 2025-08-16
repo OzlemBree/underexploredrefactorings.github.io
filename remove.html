@@ -31,7 +31,20 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Remove debug logging notes</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces a constructor call with a static factory method for better flexibility.</p>
+                        <p><strong>Definition:</strong> Remove inline debug logging notes from parameter validation messages, keeping only essential error messages.</p>
+
+  <pre><code class="language-properties">
+ parameters.copyFail=Vytvoření kopie původních hodnot parametrů pro účely DEBUG logování selhalo
+ parameters.decodeFail.debug=Dekódování znaku selhalo. Parametr [{0}] s hodnotou [{1}] byl ignorován.
+-parameters.fallToDebug=\n\
+-\ Poznámka: další výskyty chyb parametrů budou zalogovány v DEBUG úrovni.
+-parameters.maxCountFail.fallToDebug=\n\
+-\ Poznámka: další výskyty této chyby budou zalogovány v úrovni DEBUG.
+  </code></pre>
+
+  <p><strong>Rationale:</strong> Removes redundant debug-level logging notes from resource bundles, reducing noise in user-facing messages while keeping logging behavior intact at the DEBUG level. This improves readability of localized error messages and prevents unnecessary duplication.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/tomcat/commit/7c4e89fc00" target="_blank">Apache Tomcat Commit Example</a></p>
                     </div>
                 </div>
 
