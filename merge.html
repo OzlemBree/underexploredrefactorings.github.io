@@ -31,7 +31,16 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Combine enum with comparator</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces a constructor call with a static factory method for better flexibility.</p>
+                        <p><strong>Definition:</strong> Replace an <code>enum</code> used for sorting logic with a dedicated <code>Comparator</code> (or key abstraction) to improve flexibility and maintainability.</p>
+
+  <pre><code class="language-java">
+-        GetSnapshotsRequest.SortBy sortBy,
++        SnapshotSortKey sortBy,
+  </code></pre>
+
+  <p><strong>Rationale:</strong> Using a <code>Comparator</code> (or a sorting key abstraction like <code>SnapshotSortKey</code>) instead of an <code>enum</code> allows for richer, more flexible sorting logic without bloating the enum with multiple cases. It decouples sorting rules from the enumeration, making the code easier to extend and align with object-oriented design principles.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/elastic/elasticsearch/commit/1fae3e75017" target="_blank">Elasticsearch Commit Example</a></p>
                     </div>
                 </div>    
 			   </div>
