@@ -244,7 +244,31 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace iteration-based retrieval with switch expression</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Replace iterative lookups over a collection with a Java <code>switch</code> expression for direct mapping of values to results.</p>
+  
+  <pre><code class="language-java">
+- for (Map.Entry&lt;String, Integer&gt; entry : propagationConstants.entrySet()) {
+-     if (entry.getValue().equals(propagationBehavior)) {
+-         return entry.getKey();
+-     }
+- }
+- throw new IllegalArgumentException("Unsupported propagation behavior: " + propagationBehavior);
++ return switch(propagationBehavior) {
++     case TransactionDefinition.PROPAGATION_REQUIRED -&gt; "PROPAGATION_REQUIRED";
++     case TransactionDefinition.PROPAGATION_SUPPORTS -&gt; "PROPAGATION_SUPPORTS";
++     case TransactionDefinition.PROPAGATION_MANDATORY -&gt; "PROPAGATION_MANDATORY";
++     case TransactionDefinition.PROPAGATION_REQUIRES_NEW -&gt; "PROPAGATION_REQUIRES_NEW";
++     case TransactionDefinition.PROPAGATION_NOT_SUPPORTED -&gt; "PROPAGATION_NOT_SUPPORTED";
++     case TransactionDefinition.PROPAGATION_NEVER -&gt; "PROPAGATION_NEVER";
++     case TransactionDefinition.PROPAGATION_NESTED -&gt; "PROPAGATION_NESTED";
++     default -&gt; throw new IllegalArgumentException("Unsupported propagation behavior: " + propagationBehavior);
++ };
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Improves readability and efficiency by eliminating explicit loops, making the mapping of input values to results more concise and declarative.</p>
+
+  <p><strong>Reference:</strong><a href="https://github.com/spring-projects/spring-framework/commit/bcff7d74cd" target="_blank">Spring Framework Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
