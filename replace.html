@@ -31,7 +31,23 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Replace ‘expected’ attribute with try-catch</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces a constructor call with a static factory method for better flexibility.</p>
+                         <p><strong>Definition:</strong> Replace the <code>expected</code> attribute in <code>@Test</code> with an explicit try-catch block to handle the exception.</p>
+      
+      <pre><code class="language-java">
+- @Test(expected = AssumptionViolatedException.class) 
++ @Test
+  public void assumeThatWorks() {
+-     assumeThat(1, is(2));
++     try {
++         assumeThat(1, is(2));
++         fail("should throw AssumptionViolatedException");
++     } catch (AssumptionViolatedException e) {
++         // expected
++     }
+  }
+      </code></pre>
+      <p><strong>Rationale:</strong> Improves clarity, allows assertions on exception details, and ensures compatibility with modern JUnit practices.</p>
+	  <p><strong>Reference:</strong><a href="https://github.com/junit-team/junit4/commit/df016dc0" target="_blank">JUnit 4 Commit Example</a>
                     </div>
                 </div>
 
