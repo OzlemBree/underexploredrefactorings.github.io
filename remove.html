@@ -72,7 +72,11 @@
                     <button class="accordion-header">Remove duplicate condition checks</button>
                     <div class="accordion-content">
                         <p><strong>Definition:</strong> Remove redundant condition checks inside an <code>if</code> statement when one condition is unnecessary or already implied by the surrounding logic.</p> 
- <pre><code class="language-java"> - if (!componentScans.isEmpty() && - !this.conditionEvaluator.shouldSkip(sourceClass.getMetadata(), ConfigurationPhase.REGISTER_BEAN)) { + if (!componentScans.isEmpty()) { for (AnnotationAttributes componentScan : componentScans) { // The config class is annotated with @ComponentScan -> perform the scan immediately Set&lt;BeanDefinitionHolder&gt; scannedBeanDefinitions = </code></pre> 
+ <pre><code class="language-java"> 
+	 - if (!componentScans.isEmpty() && - !this.conditionEvaluator.shouldSkip(sourceClass.getMetadata(), ConfigurationPhase.REGISTER_BEAN)) { 
+	 + if (!componentScans.isEmpty()) { for (AnnotationAttributes componentScan : componentScans) { 
+	 // The config class is annotated with @ComponentScan -> perform the scan immediately Set&lt;BeanDefinitionHolder&gt; 
+ </code></pre> 
  <p><strong>Rationale:</strong> The second condition check (<code>shouldSkip(...)</code>) was redundant because the evaluation was either unnecessary in this context or already guaranteed by higher-level logic. Removing it simplifies the conditional, improves readability, and avoids evaluating duplicate or unnecessary conditions at runtime.</p> 
  <p><strong>Reference:</strong> <a href="https://github.com/spring-projects/spring-framework/commit/871f705bca" target="_blank">Spring Framework Commit Example</a></p> 
                     </div>
