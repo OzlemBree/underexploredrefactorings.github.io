@@ -120,7 +120,17 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Replace collections.sort() with list.sort()</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Replace <code>Collections.sort()</code> with the instance method <code>List.sort()</code> for improved readability and modern API usage.</p>
+  
+  <pre><code class="language-java">
+- Collections.sort(this.filters, Comparator.comparing(KeyedFilter::key));
++ this.filters.sort(Comparator.comparing(KeyedFilter::key));
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Enhances code clarity by calling sort directly on the list, reduces verbosity, and aligns with modern Java practices introduced in Java 8.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/elastic/elasticsearch/commit/850e88c5894" target="_blank"> ElasticSearch Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
