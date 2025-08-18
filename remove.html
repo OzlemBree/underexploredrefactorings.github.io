@@ -204,7 +204,18 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove unnecessary compilation dependency </button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Remove an unused or obsolete dependency from the project build configuration to simplify compilation and reduce maintenance overhead.</p>
+
+  <pre><code class="language-xml">
+-    &lt;okhttp.version&gt;2.7.5&lt;/okhttp.version&gt;
+     &lt;okhttp3.version&gt;4.10.0&lt;/okhttp3.version&gt;
+     &lt;okio.version&gt;3.2.0&lt;/okio.version&gt;
+     &lt;kotlin-stdlib.verion&gt;1.6.20&lt;/kotlin-stdlib.verion&gt;
+  </code></pre>
+
+  <p><strong>Rationale:</strong> The older <code>okhttp</code> dependency was no longer required after migrating to <code>okhttp3</code>. Removing it avoids redundant version management, reduces potential conflicts, and keeps the build configuration cleaner.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/hadoop/commit/e09e81abe47a" target="_blank">Apache Hadoop Commit Example</a></p>
                     </div>
                 </div>
 				
