@@ -186,7 +186,18 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove unnecessary array creation</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Remove an unnecessary array creation when passing a single argument to a constructor call.</p>
+  
+  <pre><code class="language-java">
+- this(cause, new Class<?>[] { testClass });
++ this(cause, testClass);
+  </code></pre>
+  
+  <p><strong>Rationale:</strong> Simplifies the code by eliminating redundant array creation, improves readability, and avoids minor overhead of unnecessary object creation.</p>
+  
+  <p><strong>Reference:</strong> 
+    <a href="https://github.com/junit-team/junit4/commit/17a2f117" target="_blank">JUnit 4 Commit Example</a>
+  </p>
                     </div>
                 </div>
 				
