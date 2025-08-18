@@ -256,7 +256,21 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove unnecessary actions by precondition checking</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Remove unnecessary actions by adding a pre-condition check to avoid redundant method calls or state updates.</p>
+  <pre><code class="language-java">
+  public void setBytesSent(long bytesSent) {
+      deadBytesSent.reset();
+-     deadBytesSent.add(bytesSent);
++     if (bytesSent != 0) {
++         deadBytesSent.add(bytesSent);
++     }
+      for (UpgradeInfo ui : upgradeInfos) {
+          ui.setBytesSent(bytesSent);
+      }
+  }
+  </code></pre>
+  <p><strong>Rationale:</strong> Prevents unnecessary method invocations when the argument is zero, reducing overhead and ensuring cleaner, more efficient execution without changing the program’s semantics.</p>
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/tomcat/commit/3a9dbd17f5" target="_blank">Apache Tomcat Commit Example</a></p>
                     </div>
                 </div>	
 			   </div>
