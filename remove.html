@@ -108,7 +108,24 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove overriding method that equals to its overridden method</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                        <p><strong>Definition:</strong> Remove an overriding method that provides the same implementation as its superclass method.</p>
+
+  <pre><code class="language-java">
+-    @Override
+-    public JarEntry getJarEntry() throws IOException {
+-        if (getEntryName() == null) {
+-            return null;
+-        } else {
+-            return super.getJarEntry();
+-        }
+-    }
+   }
+ }
+  </code></pre>
+
+  <p><strong>Rationale:</strong> The overriding method did not add meaningful behavior beyond delegating to <code>super.getJarEntry()</code>. Removing it reduces redundancy, simplifies the class, and ensures consistency with the superclass implementation.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/tomcat/commit/2236738fb2" target="_blank">Apache Commons Compress Commit Example</a></p>
                     </div>
                 </div>
 				
