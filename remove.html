@@ -238,7 +238,18 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove unnecessary type cast</button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Eliminate redundant type casts when the compiler can already infer the type safely.</p>
+
+  <pre><code class="language-java">
+  static AddOp getInstance(OpInstanceCache cache) {
+-     return (AddOp) cache.get(OP_ADD);
++     return cache.get(OP_ADD);
+  }
+  </code></pre>
+
+  <p><strong>Rationale:</strong> Removes unnecessary code, improves readability, and avoids clutter without changing program behavior.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/hadoop/commit/e09e81abe47a" target="_blank"> Apache Hadoop Commit Example  </a>  </p>
                     </div>
                 </div>
 				
