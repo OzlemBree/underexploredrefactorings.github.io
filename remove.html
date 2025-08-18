@@ -131,8 +131,36 @@
 				
 				<div class="accordion-item">
                     <button class="accordion-header">Remove repetitive checking </button>
-                    <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                    <div class="accordion-content">                       
+				 <p><strong>Definition:</strong> Remove redundant local variables and duplicate checks by directly returning the result of the underlying method call.</p>
+
+  <pre><code class="language-java">
+  @Override
+  public ServletOutputStream getOutputStream() throws IOException {
+-     checkFacade();
+-     ServletOutputStream sos = response.getOutputStream();
+      if (isFinished()) {
+          response.setSuspended(true);
+      }
+-     return sos;
++     return response.getOutputStream();
+  }
+
+  @Override
+  public PrintWriter getWriter() throws IOException {
+-     checkFacade();
+-     PrintWriter writer = response.getWriter();
+      if (isFinished()) {
+          response.setSuspended(true);
+      }
+-     return writer;
++     return response.getWriter();
+  }
+  </code></pre>
+
+  <p><strong>Rationale:</strong> Eliminates unnecessary façade checks and temporary variables, reducing redundancy and simplifying the code. This makes the methods more concise, easier to read, and less prone to maintenance issues while preserving functionality.</p>
+
+  <p><strong>Reference:</strong> <a href="https://github.com/apache/tomcat/commit/6e641be1d7" target="_blank">Apache Tomcat Commit Example</a></p>
                     </div>
                 </div>
 				
