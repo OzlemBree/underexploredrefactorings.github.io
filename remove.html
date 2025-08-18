@@ -167,7 +167,19 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove suppress warning annotation </button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                         <p><strong>Definition:</strong> Remove unnecessary <code>@SuppressWarnings</code> annotation when the warning is no longer applicable.</p> 
+  
+  <pre><code class="language-java">
+   public static class ParametrizedWithSpecialCharsInName {
+-        @SuppressWarnings("unused")
+         public ParametrizedWithSpecialCharsInName(String s) {
+         }
+   }
+  </code></pre> 
+  
+  <p><strong>Rationale:</strong> Simplifies the code by removing redundant annotations, improving readability and ensuring that warnings are only suppressed when strictly necessary.</p> 
+  
+  <p><strong>Reference:</strong> <a href="https://github.com/junit-team/junit4/commit/3d535e08" target="_blank">JUnit 4 Commit Example</a></p> 
                     </div>
                 </div>
 				
