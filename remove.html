@@ -222,7 +222,16 @@
 				<div class="accordion-item">
                     <button class="accordion-header">Remove unnecessary extends clause </button>
                     <div class="accordion-content">
-                        <p>This refactoring replaces hard-coded numbers with named constants for clarity.</p>
+                       <p><strong>Definition:</strong> Remove redundant <code>extends Object</code> from a class declaration, since all Java classes implicitly extend <code>Object</code>.</p>
+  <pre><code class="language-java">
+- public class TestResult extends Object {
++ public class TestResult {
+      protected List&lt;TestFailure&gt; fFailures;
+      protected List&lt;TestFailure&gt; fErrors;
+  }
+  </code></pre>
+  <p><strong>Rationale:</strong> Simplifies the class declaration by eliminating redundant inheritance, improving readability, and adhering to common Java conventions.</p>
+  <p><strong>Reference:</strong> <a href="https://github.com/junit-team/junit4/commit/17a2f117" target="_blank">JUnit 4 Commit Example</a></p>
                     </div>
                 </div>
 				
