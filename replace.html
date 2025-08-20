@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	</head>
+	<script>
+window.onbeforeprint = () => {
+  document.querySelectorAll('.accordion-content').forEach(sec => {
+    sec.style.display = 'block';
+  });
+};
+</script>
+
 <body>
     <header>
         <h1>Replace Refactorings</h1>
